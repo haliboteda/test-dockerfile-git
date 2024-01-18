@@ -114,4 +114,6 @@ RUN set -eux; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps; \
 	rm -rf /var/lib/apt/lists/*
 
+COPY ports.conf /etc/apache2/ports.conf
+
 CMD ["apache2-foreground"]
