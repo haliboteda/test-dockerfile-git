@@ -31,6 +31,8 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
+  		pdo \
+    		pdo_pgsql \
 	; \
 	\
 	pecl install APCu-5.1.21; \
