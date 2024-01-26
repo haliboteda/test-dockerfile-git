@@ -10,7 +10,7 @@ RUN set -eux; \
 		imagemagick \
 		# Required for SyntaxHighlighting
 		python3 \
-    		php8.0-pgsql \
+    		php-pgsql \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
