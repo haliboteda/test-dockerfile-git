@@ -22,7 +22,7 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
-      		php-pgsql \
+      		php8.1-pgsql \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
