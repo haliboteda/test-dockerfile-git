@@ -10,6 +10,7 @@ RUN set -eux; \
 		imagemagick \
 		# Required for SyntaxHighlighting
 		python3 \
+  		libpq-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -30,7 +31,6 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
-  		pgsql \
   		pdo \
     		pdo_pgsql \
 	; \
