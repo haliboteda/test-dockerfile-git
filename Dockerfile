@@ -10,7 +10,7 @@ RUN set -eux; \
 		imagemagick \
 		# Required for SyntaxHighlighting
 		python3 \
-    		postgresql-libs \
+    		php8.0-pgsql \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -23,7 +23,6 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
-  		postgresql-dev \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
