@@ -30,6 +30,7 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
+  		pgsql \
   		pdo \
     		pdo_pgsql \
 	; \
