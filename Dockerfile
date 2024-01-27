@@ -10,6 +10,7 @@ RUN set -eux; \
 		imagemagick \
 		# Required for SyntaxHighlighting
 		python3 \
+  		libpq-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -22,7 +23,6 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
-      		php8.1-pgsql \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
@@ -33,6 +33,7 @@ RUN set -eux; \
 		opcache \
   		pdo \
     		pdo_pgsql \
+      		pgsql \
 	; \
 	\
 	pecl install APCu-5.1.21; \
