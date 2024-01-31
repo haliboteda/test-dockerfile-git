@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:8.0-apache
 
 # System dependencies
 RUN set -eux; \
@@ -87,8 +87,8 @@ RUN set -eux; \
 	chown -R www-data:www-data /var/www/data
 
 # Version
-ENV MEDIAWIKI_MAJOR_VERSION 1.31
-ENV MEDIAWIKI_VERSION 1.31.16
+ENV MEDIAWIKI_MAJOR_VERSION 1.35
+ENV MEDIAWIKI_VERSION 1.35.13
 
 # MediaWiki setup
 RUN set -eux; \
