@@ -34,6 +34,7 @@ RUN set -eux; \
   		pdo \
     		pdo_pgsql \
       		pgsql \
+		pdo_mysql \
 	; \
 	\
 	pecl install APCu-5.1.21; \
