@@ -128,6 +128,8 @@ COPY ports.conf /etc/apache2/ports.conf
 RUN set -eux; \
 	mkdir /tmp/extensions; \
  	cd /tmp/extensions; \
+  	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPProvider; \
+	cp -r LDAPProvider /var/www/html/extensions; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
    	cp -r PluggableAuth /var/www/html/extensions; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPAuthentication2; \
