@@ -129,7 +129,7 @@ RUN set -eux; \
 	mkdir /tmp/extensions; \
  	cd /tmp/extensions; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
-   	cp -r PluggableAuth /var/www/html/PluggableAuth; \
+   	cp -r PluggableAuth /var/www/html/extensions; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPAuthentication2; \
    	cp -r LDAPAuthentication2 /var/www/html/extensions; \
 	rm -rf /tmp/*
