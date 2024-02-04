@@ -120,7 +120,7 @@ RUN set -eux; \
 
 COPY ports.conf /etc/apache2/ports.conf
 
+CMD ["apache2-foreground"]
+
 USER www-data
 RUN whoami
-
-CMD ["apache2-foreground"]
