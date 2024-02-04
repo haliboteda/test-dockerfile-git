@@ -130,7 +130,7 @@ RUN set -eux; \
  	cd /tmp/extensions; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPAuthentication2; \
    	cp -r LDAPAuthentication2 /var/www/html/extensions; \
-	# rm -rf /tmp/*
+	rm -rf /tmp/*
 
 CMD ["apache2-foreground"]
 
