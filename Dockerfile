@@ -121,13 +121,15 @@ RUN set -eux; \
 COPY ports.conf /etc/apache2/ports.conf
 
 # download necessary extensions
-USER www-data
-RUN whoami
+# USER www-data
+# RUN whoami
 
 # MediaWiki setup
 RUN set -eux; \
 	mkdir /tmp/extensions; \
  	cd /tmp/extensions; \
+  	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
+   	cp -r PluggableAuth /var/www/html/PluggableAuth; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPAuthentication2; \
    	cp -r LDAPAuthentication2 /var/www/html/extensions; \
 	rm -rf /tmp/*
