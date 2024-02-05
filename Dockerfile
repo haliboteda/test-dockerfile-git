@@ -23,6 +23,7 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
+  		libldap2-dev \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
