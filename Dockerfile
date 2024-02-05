@@ -11,7 +11,6 @@ RUN set -eux; \
 		# Required for SyntaxHighlighting
 		python3 \
   		libpq-dev \
-    		php-ldap \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -35,6 +34,7 @@ RUN set -eux; \
   		pdo \
     		pdo_pgsql \
       		pgsql \
+		ldap \
 	; \
 	\
 	pecl install APCu-5.1.21; \
