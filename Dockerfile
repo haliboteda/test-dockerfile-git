@@ -132,8 +132,7 @@ RUN set -eux; \
 	cp -r LDAPProvider /var/www/html/extensions; \
   	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
    	cp -r PluggableAuth /var/www/html/extensions; \
-  	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPAuthentication; \
-   	cp -r LDAPAuthentication /var/www/html/extensions; \
+
 	rm -rf /tmp/*
 
 CMD ["apache2-foreground"]
