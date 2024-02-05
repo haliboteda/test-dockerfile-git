@@ -11,6 +11,7 @@ RUN set -eux; \
 		# Required for SyntaxHighlighting
 		python3 \
   		libpq-dev \
+    		php-ldap \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
