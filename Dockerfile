@@ -141,7 +141,8 @@ RUN set -eux; \
 	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
-
+RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+	mv composer.phar /usr/local/bin/composer
 CMD ["apache2-foreground"]
 
 
