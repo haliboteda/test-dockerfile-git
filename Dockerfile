@@ -11,6 +11,9 @@ RUN set -eux; \
 		# Required for SyntaxHighlighting
 		python3 \
   		libpq-dev \
+    		# 
+      		libcurl4 \
+		libcurl4-openssl-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
