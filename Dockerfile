@@ -23,7 +23,7 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
-  		libldap2-dev \
+  		# libldap2-dev \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
@@ -35,7 +35,7 @@ RUN set -eux; \
   		pdo \
     		pdo_pgsql \
       		pgsql \
-		ldap \
+		# ldap \
 	; \
 	\
 	pecl install APCu-5.1.21; \
@@ -132,12 +132,10 @@ ENV MEDIAWIKI_EXT_VERSION REL1_39
 RUN set -eux; \
 	mkdir /tmp/extensions; \
  	cd /tmp/extensions; \
-  	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPProvider; \
-	cp -r LDAPProvider /var/www/html/extensions; \
   	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
    	cp -r PluggableAuth /var/www/html/extensions; \
-	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPAuthentication2; \
- 	cp -r LDAPAuthentication2 /var/www/html/extensions; \
+	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
+ 	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
 
 CMD ["apache2-foreground"]
