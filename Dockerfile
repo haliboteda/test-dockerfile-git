@@ -17,8 +17,8 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
- # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install Composer
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -144,12 +144,11 @@ RUN set -eux; \
 	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
-# RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-# 	chmod ug+x composer.phar; \
-# 	mv composer.phar /usr/local/bin/composer
+RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+	chmod 777 composer.phar; \
+	mv composer.phar /usr/local/bin/composer
  
 # USER www-data
-
 RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
