@@ -14,9 +14,11 @@ RUN set -eux; \
     		# 
       		libcurl4 \
 		libcurl4-openssl-dev \
-  		composer \
 	; \
 	rm -rf /var/lib/apt/lists/*
+
+ # Install Composer
+RUN curl -sS https://getcomposer.org/installer | php
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -147,6 +149,7 @@ RUN set -eux; \
 # 	mv composer.phar /usr/local/bin/composer
  
 # USER www-data
+
 RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
