@@ -18,7 +18,7 @@ RUN set -eux; \
 	rm -rf /var/lib/apt/lists/*
 
  # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -150,7 +150,7 @@ RUN set -eux; \
  
 # USER www-data
 
-RUN php composer.phar require jumbojett/openid-connect-php
+RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
 
