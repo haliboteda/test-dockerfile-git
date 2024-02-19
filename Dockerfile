@@ -147,8 +147,10 @@ RUN set -eux; \
 RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 	chmod 777 composer.phar; \
 	mv composer.phar /usr/local/bin/composer
- 
-USER www-data
+
+RUN pwd
+RUN chmod 666 composer.json
+# USER www-data
 RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
