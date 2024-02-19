@@ -14,6 +14,7 @@ RUN set -eux; \
     		# 
       		libcurl4 \
 		libcurl4-openssl-dev \
+  		composer \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -141,11 +142,11 @@ RUN set -eux; \
 	git clone -b ${MEDIAWIKI_EXT_VERSION} https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
-RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chmod ug+x composer.phar; \
-	mv composer.phar /usr/local/bin/composer
+# RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+# 	chmod ug+x composer.phar; \
+# 	mv composer.phar /usr/local/bin/composer
  
-USER www-data
+# USER www-data
 RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
