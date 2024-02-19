@@ -127,7 +127,7 @@ RUN set -eux; \
 COPY ports.conf /etc/apache2/ports.conf
 
 # download necessary extensions
-# USER www-data
+
 # RUN whoami
 
 # MediaWiki extensions setup
@@ -142,9 +142,10 @@ RUN set -eux; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
 RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chown +x composer.phar; \
-	mv composer.phar /usr/local/bin/composer; \
- 	composer require jumbojett/openid-connect-php
+	mv composer.phar /usr/local/bin/composer
+ 
+USER www-data
+RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
 
