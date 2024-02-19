@@ -150,7 +150,7 @@ RUN set -eux; \
  
 # USER www-data
 
-RUN composer require jumbojett/openid-connect-php
+RUN php composer.phar require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
 
