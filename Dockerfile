@@ -12,8 +12,8 @@ RUN set -eux; \
 		python3 \
   		libpq-dev \
     		# 
-      		libcurl4 \
-		libcurl4-openssl-dev \
+      		# libcurl4 \
+		# libcurl4-openssl-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -42,7 +42,7 @@ RUN set -eux; \
     		pdo_pgsql \
       		pgsql \
 		# ldap \
-  		curl \
+  		# curl \
 	; \
 	\
 	pecl install APCu-5.1.21; \
@@ -149,8 +149,8 @@ RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 	mv composer.phar /usr/local/bin/composer
 
 RUN chmod -R 777 ../html
-# USER www-data
-# RUN composer require jumbojett/openid-connect-php
+USER root
+RUN composer require jumbojett/openid-connect-php
   
 CMD ["apache2-foreground"]
 
