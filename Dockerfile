@@ -14,6 +14,9 @@ RUN set -eux; \
     		# 
       		# libcurl4 \
 		# libcurl4-openssl-dev \
+  		zip \
+    		unzip 
+      		php-zip \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
