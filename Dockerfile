@@ -137,7 +137,7 @@ COPY ports.conf /etc/apache2/ports.conf
 # RUN whoami
 
 # MediaWiki extensions setup
-ENV MEDIAWIKI_EXT_VERSION REL1_39
+ENV MEDIAWIKI_EXT_VERSION 7.0.0
 
 RUN set -eux; \
 	mkdir /tmp/extensions; \
