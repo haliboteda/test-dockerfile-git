@@ -14,9 +14,8 @@ RUN set -eux; \
     		# 
       		# libcurl4 \
 		# libcurl4-openssl-dev \
-  		zip \
-    		unzip 
-      		php-zip \
+		libzip-dev \
+		zip  \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -46,6 +45,7 @@ RUN set -eux; \
       		pgsql \
 		# ldap \
   		# curl \
+    		zip \
 	; \
 	\
 	pecl install APCu-5.1.21; \
