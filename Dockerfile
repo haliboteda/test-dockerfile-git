@@ -155,6 +155,10 @@ RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 USER root
 RUN composer require jumbojett/openid-connect-php 1.0.0
 RUN rm -rf /.composer
+	
+# add mw log directory
+RUN mkdir /var/log/mediawiki; \
+	chown -R www-data:www-data /var/log/mediawiki
   
 CMD ["apache2-foreground"]
 
