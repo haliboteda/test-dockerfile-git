@@ -155,6 +155,9 @@ RUN chmod -R 777 ../html
 USER root
 RUN composer require jumbojett/openid-connect-php v0.9.10
 RUN rm -rf /.composer
+
+RUN touch composer.lock
+RUN chmod -R 777 composer.lock
 	
 # add mw log directory
 RUN mkdir /var/log/mediawiki; \
