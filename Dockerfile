@@ -153,7 +153,7 @@ RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 
 RUN chmod -R 777 ../html
 USER root
-RUN composer require jumbojett/openid-connect-php
+RUN composer require jumbojett/openid-connect-php v0.9.10
 RUN rm -rf /.composer
 	
 # add mw log directory
