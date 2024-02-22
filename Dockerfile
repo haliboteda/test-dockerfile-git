@@ -136,32 +136,32 @@ COPY ports.conf /etc/apache2/ports.conf
 
 # RUN whoami
 
-# MediaWiki extensions setup
-ENV MEDIAWIKI_EXT_VERSION 7.0.0
+# # MediaWiki extensions setup
+# ENV MEDIAWIKI_EXT_VERSION 7.0.0
 
-RUN set -eux; \
-	mkdir /tmp/extensions; \
- 	cd /tmp/extensions; \
-  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
-   	cp -r PluggableAuth /var/www/html/extensions; \
-	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
- 	cp -r OpenIDConnect /var/www/html/extensions; \
-	rm -rf /tmp/*
-RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chmod 777 composer.phar; \
-	mv composer.phar /usr/local/bin/composer
+# RUN set -eux; \
+# 	mkdir /tmp/extensions; \
+#  	cd /tmp/extensions; \
+#   	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
+#    	cp -r PluggableAuth /var/www/html/extensions; \
+# 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
+#  	cp -r OpenIDConnect /var/www/html/extensions; \
+# 	rm -rf /tmp/*
+# RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+# 	chmod 777 composer.phar; \
+# 	mv composer.phar /usr/local/bin/composer
 
-RUN chmod -R 777 ../html
-USER root
-RUN composer require jumbojett/openid-connect-php v0.9.10
-RUN rm -rf /.composer
+# RUN chmod -R 777 ../html
+# USER root
+# RUN composer require jumbojett/openid-connect-php v0.9.10
+# RUN rm -rf /.composer
 
-RUN touch composer.lock
-RUN chmod -R 777 composer.lock
+# RUN touch composer.lock
+# RUN chmod -R 777 composer.lock
 	
-# add mw log directory
-RUN mkdir /var/log/mediawiki; \
-	chown -R www-data:www-data /var/log/mediawiki
+# # add mw log directory
+# RUN mkdir /var/log/mediawiki; \
+# 	chown -R www-data:www-data /var/log/mediawiki
   
 CMD ["apache2-foreground"]
 
