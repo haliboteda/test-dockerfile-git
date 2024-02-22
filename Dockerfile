@@ -133,20 +133,16 @@ RUN set -eux; \
 COPY ports.conf /etc/apache2/ports.conf
 
 # download necessary extensions
+ENV MEDIAWIKI_EXT_VERSION 7.0.0
 
-# RUN whoami
-
-# # MediaWiki extensions setup
-# ENV MEDIAWIKI_EXT_VERSION 7.0.0
-
-# RUN set -eux; \
-# 	mkdir /tmp/extensions; \
-#  	cd /tmp/extensions; \
-#   	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
-#    	cp -r PluggableAuth /var/www/html/extensions; \
-# 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
-#  	cp -r OpenIDConnect /var/www/html/extensions; \
-# 	rm -rf /tmp/*
+RUN set -eux; \
+	mkdir /tmp/extensions; \
+ 	cd /tmp/extensions; \
+  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
+   	cp -r PluggableAuth /var/www/html/extensions; \
+	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
+ 	cp -r OpenIDConnect /var/www/html/extensions; \
+	rm -rf /tmp/*
 # RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 # 	chmod 777 composer.phar; \
 # 	mv composer.phar /usr/local/bin/composer
