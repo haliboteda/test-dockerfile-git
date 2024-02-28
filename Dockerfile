@@ -143,13 +143,14 @@ RUN set -eux; \
 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
-RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chmod ug+x composer.phar; \
-	mv composer.phar /usr/local/bin/composer
+RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar
+	# ; \
+	# chmod ug+x composer.phar; \
+	# mv composer.phar /usr/local/bin/composer
 
-RUN chmod g+w ../html
-USER root
-RUN composer require jumbojett/openid-connect-php v0.9.10
+# RUN chmod g+w ../html
+# USER root
+# RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
 # RUN rm -rf /.composer
 
 # RUN touch composer.lock
@@ -159,7 +160,7 @@ RUN composer require jumbojett/openid-connect-php v0.9.10
 # RUN mkdir /var/log/mediawiki; \
 # 	chown -R www-data:www-data /var/log/mediawiki
   
-CMD ["apache2-foreground"]
+# CMD ["apache2-foreground"]
 
 
 
