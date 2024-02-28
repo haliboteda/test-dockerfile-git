@@ -144,16 +144,16 @@ RUN set -eux; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
 RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chmod 777 composer.phar; \
+	# chmod 777 composer.phar; \
 	mv composer.phar /usr/local/bin/composer
 
-RUN chmod -R 777 ../html
+# RUN chmod -R 777 ../html
 USER root
 RUN composer require jumbojett/openid-connect-php v0.9.10
 RUN rm -rf /.composer
 
-RUN touch composer.lock
-RUN chmod -R 777 composer.lock
+# RUN touch composer.lock
+# RUN chmod -R 777 composer.lock
 	
 # # add mw log directory
 # RUN mkdir /var/log/mediawiki; \
