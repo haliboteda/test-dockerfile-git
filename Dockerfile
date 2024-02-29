@@ -151,7 +151,7 @@ RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 
 # RUN chmod g+w ../html
 # USER root
-# RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
+RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
 # RUN rm -rf /.composer
 
 # RUN touch composer.lock
