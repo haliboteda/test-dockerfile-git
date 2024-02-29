@@ -144,7 +144,8 @@ RUN set -eux; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
 RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chmod 777 composer.json
+	chown www-data:www-data composer.json
+ 	# chmod 777 composer.json
 	# chmod ug+x composer.phar; \
 	# mv composer.phar /usr/local/bin/composer
 
