@@ -133,6 +133,9 @@ RUN set -eux; \
 # use 8080/8443 port
 COPY ports.conf /etc/apache2/ports.conf
 
+# 
+RUN chmod -R 777 /var/www/html/images
+
 # download necessary extensions
 ENV MEDIAWIKI_EXT_VERSION 7.0.0
 
