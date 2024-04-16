@@ -153,9 +153,6 @@ RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
 
 RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
 
-# copy setting file to destination
-COPY LocalSettings.php /var/www/html/LocalSettings.php
-
 CMD ["apache2-foreground"]
 
 
