@@ -147,11 +147,12 @@ RUN set -eux; \
 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
-# install composer
-RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-	chown www-data:www-data composer.json
+ 
+# # install composer
+# RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+# 	chown www-data:www-data composer.json
 
-RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
+# RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
 
 CMD ["apache2-foreground"]
 
