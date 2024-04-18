@@ -1,4 +1,4 @@
-FROM php:7.1.32-apache
+FROM php:8.1-apache
 
 # System dependencies
 RUN set -eux; \
@@ -99,8 +99,8 @@ RUN set -eux; \
 	chown -R www-data:www-data /var/www/data
 
 # Version
-ENV MEDIAWIKI_MAJOR_VERSION 1.27
-ENV MEDIAWIKI_VERSION 1.27.7
+ENV MEDIAWIKI_MAJOR_VERSION 1.39
+ENV MEDIAWIKI_VERSION 1.39.6
 
 # MediaWiki setup
 RUN set -eux; \
@@ -148,11 +148,11 @@ RUN set -eux; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
 	rm -rf /tmp/*
  
-# # install composer
-# RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-# 	chown www-data:www-data composer.json
+# install composer
+RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+	chown www-data:www-data composer.json
 
-# RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
+RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
 
 CMD ["apache2-foreground"]
 
