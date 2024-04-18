@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:8.1-apache
 
 # System dependencies
 RUN set -eux; \
@@ -99,8 +99,8 @@ RUN set -eux; \
 	chown -R www-data:www-data /var/www/data
 
 # Version
-ENV MEDIAWIKI_MAJOR_VERSION 1.23
-ENV MEDIAWIKI_VERSION 1.23.10
+ENV MEDIAWIKI_MAJOR_VERSION 1.39
+ENV MEDIAWIKI_VERSION 1.39.6
 
 # MediaWiki setup
 RUN set -eux; \
@@ -110,23 +110,23 @@ RUN set -eux; \
 	"; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends $fetchDeps; \
-	# \
-	# curl -fSL "https://releases.wikimedia.org/mediawiki/${MEDIAWIKI_MAJOR_VERSION}/mediawiki-${MEDIAWIKI_VERSION}.tar.gz" -o mediawiki.tar.gz; \
-	# curl -fSL "https://releases.wikimedia.org/mediawiki/${MEDIAWIKI_MAJOR_VERSION}/mediawiki-${MEDIAWIKI_VERSION}.tar.gz.sig" -o mediawiki.tar.gz.sig; \
+	\
+	curl -fSL "https://releases.wikimedia.org/mediawiki/${MEDIAWIKI_MAJOR_VERSION}/mediawiki-${MEDIAWIKI_VERSION}.tar.gz" -o mediawiki.tar.gz; \
+	curl -fSL "https://releases.wikimedia.org/mediawiki/${MEDIAWIKI_MAJOR_VERSION}/mediawiki-${MEDIAWIKI_VERSION}.tar.gz.sig" -o mediawiki.tar.gz.sig; \
 	export GNUPGHOME="$(mktemp -d)"; \
 # gpg key from https://www.mediawiki.org/keys/keys.txt
-	# gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \
-	# 	D7D6767D135A514BEB86E9BA75682B08E8A3FEC4 \
-	# 	441276E9CCD15F44F6D97D18C119E1A64D70938E \
-	#	F7F780D82EBFB8A56556E7EE82403E59F9F8CD79 \
-	#	1D98867E82982C8FE0ABC25F9B69B3109D3BB7B0 \
-	#; \
-	# gpg --batch --verify mediawiki.tar.gz.sig mediawiki.tar.gz; \
-	# tar -x --strip-components=1 -f mediawiki.tar.gz; \
-	# gpgconf --kill all; \
-	# rm -r "$GNUPGHOME" mediawiki.tar.gz.sig mediawiki.tar.gz; \
+	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \
+		D7D6767D135A514BEB86E9BA75682B08E8A3FEC4 \
+		441276E9CCD15F44F6D97D18C119E1A64D70938E \
+		F7F780D82EBFB8A56556E7EE82403E59F9F8CD79 \
+		1D98867E82982C8FE0ABC25F9B69B3109D3BB7B0 \
+	; \
+	gpg --batch --verify mediawiki.tar.gz.sig mediawiki.tar.gz; \
+	tar -x --strip-components=1 -f mediawiki.tar.gz; \
+	gpgconf --kill all; \
+	rm -r "$GNUPGHOME" mediawiki.tar.gz.sig mediawiki.tar.gz; \
 	chown -R www-data:www-data extensions skins cache images; \
-	# \
+	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -139,23 +139,20 @@ RUN chmod -R 777 /var/www/html/images
 # download necessary extensions
 ENV MEDIAWIKI_EXT_VERSION 7.0.0
 
-# RUN set -eux; \
-# 	mkdir /tmp/extensions; \
-#  	cd /tmp/extensions; \
-#   	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
-#    	cp -r PluggableAuth /var/www/html/extensions; \
-# 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
-#  	cp -r OpenIDConnect /var/www/html/extensions; \
-# 	rm -rf /tmp/*
+RUN set -eux; \
+	mkdir /tmp/extensions; \
+ 	cd /tmp/extensions; \
+  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
+   	cp -r PluggableAuth /var/www/html/extensions; \
+	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
+ 	cp -r OpenIDConnect /var/www/html/extensions; \
+	rm -rf /tmp/*
  
-# # install composer
-# RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
-# 	chown www-data:www-data composer.json
+# install composer
+RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
+	chown www-data:www-data composer.json
 
-# RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
+RUN php composer.phar require jumbojett/openid-connect-php v0.9.10
 
 CMD ["apache2-foreground"]
-
-
-
 
