@@ -31,7 +31,6 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
-  		# libldap2-dev \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
@@ -43,8 +42,6 @@ RUN set -eux; \
   		pdo \
     		pdo_pgsql \
       		pgsql \
-		# ldap \
-  		# curl \
     		zip \
 	; \
 	\
@@ -99,8 +96,8 @@ RUN set -eux; \
 	chown -R www-data:www-data /var/www/data
 
 # Version
-ENV MEDIAWIKI_MAJOR_VERSION 1.39
-ENV MEDIAWIKI_VERSION 1.39.6
+ENV MEDIAWIKI_MAJOR_VERSION 1.35
+ENV MEDIAWIKI_VERSION 1.35
 
 # MediaWiki setup
 RUN set -eux; \
