@@ -97,8 +97,8 @@ RUN set -eux; \
 	chown -R www-data:www-data /var/www/data
 
 # Version
-ENV MEDIAWIKI_MAJOR_VERSION 1.23
-ENV MEDIAWIKI_VERSION 1.23.10
+ENV MEDIAWIKI_MAJOR_VERSION 1.27
+ENV MEDIAWIKI_VERSION 1.27.7
 
 # MediaWiki setup
 RUN set -eux; \
@@ -135,16 +135,18 @@ COPY ports.conf /etc/apache2/ports.conf
 RUN chmod -R 777 /var/www/html/images
 
 # download necessary extensions
-ENV MEDIAWIKI_EXT_VERSION 7.0.0
+ENV MEDIAWIKI_EXT_VERSION REL1_27
 
-# RUN set -eux; \
-# 	mkdir /tmp/extensions; \
-#  	cd /tmp/extensions; \
-#   	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
-#    	cp -r PluggableAuth /var/www/html/extensions; \
-# 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
-#  	cp -r OpenIDConnect /var/www/html/extensions; \
-# 	rm -rf /tmp/*
+RUN set -eux; \
+	mkdir /tmp/extensions; \
+ 	cd /tmp/extensions; \
+  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
+   	cp -r PluggableAuth /var/www/html/extensions; \
+	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
+ 	cp -r OpenIDConnect /var/www/html/extensions; \
+  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageImages; \
+ 	cp -r PageImages /var/www/html/extensions; \
+	rm -rf /tmp/*
  
 # # install composer
 # RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
