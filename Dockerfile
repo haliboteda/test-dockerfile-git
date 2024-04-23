@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.0-apache
 
 # System dependencies
 RUN set -eux; \
@@ -97,7 +97,7 @@ RUN set -eux; \
 
 # Version
 ENV MEDIAWIKI_MAJOR_VERSION 1.35
-ENV MEDIAWIKI_VERSION 1.35.14
+ENV MEDIAWIKI_VERSION 1.35.13
 
 # MediaWiki setup
 RUN set -eux; \
