@@ -137,7 +137,7 @@ COPY ports.conf /etc/apache2/ports.conf
 RUN chmod -R 777 /var/www/html/images
 
 # download necessary extensions
-ENV MEDIAWIKI_EXT_VERSION 7.0.0
+ENV MEDIAWIKI_EXT_VERSION REL_1.39
 
 RUN set -eux; \
 	mkdir /tmp/extensions; \
@@ -146,6 +146,8 @@ RUN set -eux; \
    	cp -r PluggableAuth /var/www/html/extensions; \
 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
  	cp -r OpenIDConnect /var/www/html/extensions; \
+  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/Math; \
+ 	cp -r Math /var/www/html/extensions; \
 	rm -rf /tmp/*
  
 # install composer
