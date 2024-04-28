@@ -137,7 +137,7 @@ COPY ports.conf /etc/apache2/ports.conf
 RUN chmod -R 777 /var/www/html/images
 
 # download necessary extensions
-ENV MEDIAWIKI_EXT_VERSION REL_1.39
+ENV MEDIAWIKI_EXT_VERSION REL1_39
 
 RUN set -eux; \
 	mkdir /tmp/extensions; \
