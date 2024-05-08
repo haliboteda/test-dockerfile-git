@@ -51,7 +51,7 @@ RUN set -eux; \
     		zip \
 	; \
 	\
-	pecl install APCu-5.1.21; \
+	pecl install APCu-3.1.14; \
 	docker-php-ext-enable \
 		apcu \
 	; \
