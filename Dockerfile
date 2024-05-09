@@ -48,7 +48,9 @@ RUN set -eux; \
   		pdo \
     		#pdo_pgsql \
       		#pgsql \
-    		zip \
+    		zip \ 
+      		mysqlnd \
+		libmysqlclient \
 	; \
 	\
 	pecl install APCu-4.0.8; \
