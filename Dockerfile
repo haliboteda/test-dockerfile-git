@@ -50,7 +50,6 @@ RUN set -eux; \
       		#pgsql \
     		zip \ 
       		mysqlnd \
-		libmysqlclient \
 	; \
 	\
 	pecl install APCu-4.0.8; \
