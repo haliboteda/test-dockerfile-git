@@ -43,13 +43,13 @@ RUN set -eux; \
 		calendar \
 		intl \
 		mbstring \
-		mysqli \
+		mysqlnd \
+  		# mysqli \
 		opcache \
   		pdo \
     		#pdo_pgsql \
       		#pgsql \
     		zip \ 
-      		mysqlnd \
 	; \
 	\
 	pecl install APCu-4.0.8; \
