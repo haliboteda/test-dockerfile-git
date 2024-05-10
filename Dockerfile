@@ -43,7 +43,7 @@ RUN set -eux; \
 		calendar \
 		intl \
 		mbstring \
-		mysqlnd \
+		php5-mysql \
   		# mysqli \
 		opcache \
   		pdo \
