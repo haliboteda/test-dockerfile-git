@@ -21,7 +21,6 @@ RUN set -eux; \
 		# libcurl4-openssl-dev \
 		libzip-dev \
 		zip  \
-  		php5.6-mysql \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -45,6 +44,7 @@ RUN set -eux; \
 		intl \
 		mbstring \
   		# mysqli \
+    		mysql \
 		opcache \
   		pdo \
     		#pdo_pgsql \
@@ -55,6 +55,7 @@ RUN set -eux; \
 	pecl install APCu-4.0.8; \
 	docker-php-ext-enable \
 		apcu \
+  		mysql \
 	; \
 	rm -r /tmp/pear; \
 	\
