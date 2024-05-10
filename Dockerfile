@@ -21,6 +21,7 @@ RUN set -eux; \
 		# libcurl4-openssl-dev \
 		libzip-dev \
 		zip  \
+  		mysqlnd \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -43,7 +44,6 @@ RUN set -eux; \
 		calendar \
 		intl \
 		mbstring \
-		php5-mysql \
   		# mysqli \
 		opcache \
   		pdo \
