@@ -21,7 +21,7 @@ RUN set -eux; \
 		# libcurl4-openssl-dev \
 		libzip-dev \
 		zip  \
-  		mysqlnd \
+  		php-mysqlnd-ms \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
