@@ -147,7 +147,7 @@ ENV MEDIAWIKI_EXT_VERSION REL1_19
 RUN set -eux; \
 	mkdir /tmp/extensions; \
  	cd /tmp/extensions; \
-  	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge; \
+  	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1  https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge; \
    	cp -r UserMerge /var/www/html/extensions; \
 #   	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
 #    	cp -r PluggableAuth /var/www/html/extensions; \
