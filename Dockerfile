@@ -142,16 +142,18 @@ COPY ports.conf /etc/apache2/ports.conf
 RUN chmod -R 777 /var/www/html/images
 
 # download necessary extensions
-ENV MEDIAWIKI_EXT_VERSION 7.0.0
+ENV MEDIAWIKI_EXT_VERSION REL1_19
 
-# RUN set -eux; \
-# 	mkdir /tmp/extensions; \
-#  	cd /tmp/extensions; \
+RUN set -eux; \
+	mkdir /tmp/extensions; \
+ 	cd /tmp/extensions; \
+  	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge; \
+   	cp -r UserMerge /var/www/html/extensions; \
 #   	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth; \
 #    	cp -r PluggableAuth /var/www/html/extensions; \
 # 	git clone -b ${MEDIAWIKI_EXT_VERSION} --depth 1 https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenIDConnect; \
 #  	cp -r OpenIDConnect /var/www/html/extensions; \
-# 	rm -rf /tmp/*
+	rm -rf /tmp/*
  
 # # install composer
 # RUN curl -fSL "https://getcomposer.org/composer-2.phar" -o composer.phar; \
